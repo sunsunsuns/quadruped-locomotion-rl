@@ -67,7 +67,7 @@ PPO 是自己写的，没用 sb3：
 - 向量化采样：`SyncVectorEnv` × 16 环境，rollout 256 步，minibatch 1024
 - clip 0.2、γ 0.99、GAE λ 0.95、entropy 系数 0（原生奖励这版）、Adam lr 3e-4
 - actor/critic 各两层 256 的 tanh，actor 末层正交初始化 std=0.01，log_std 学习
-- advantage 归一化、梯度裁剪 max_norm 0.5、value loss 系数 0.5
+- advantage 归一化、梯度裁剪 max_norm=0.5、value loss 系数 0.5
 
 渲染也踩了个坑：`mjv_defaultFreeCamera` 是钉在原点上的，机器人跑出十几米之后就只剩个点，视频里看不见。换成 `mjCAMERA_TRACKING` 跟着 torso 才正常。
 
