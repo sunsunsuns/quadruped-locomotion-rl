@@ -1,0 +1,13 @@
+{
+  "policy": "runs/ant_standard",
+  "steps": 240,
+  "duration_s": 12.0,
+  "mean_vx_m_s": 1.902,
+  "max_vx_m_s": 4.153,
+  "distance_m": 22.82,
+  "mean_torso_height_m": 0.531,
+  "mean_reward_per_step": 2.57,
+  "survived_full": true,
+  "frames": 120,
+  "video": "rollout_chase.mp4"
+}
