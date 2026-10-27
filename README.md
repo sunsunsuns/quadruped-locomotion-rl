@@ -1,5 +1,11 @@
 # 四足机器人 Locomotion 强化学习训练（MuJoCo Ant + PPO）
 
+![策略行走预览](rollout_preview_frames.png)
+
+- **仓库地址**：<https://github.com/sunsunsuns/quadruped-locomotion-rl>
+- **克隆**：`git clone git@github.com:sunsunsuns/quadruped-locomotion-rl.git`
+- **演示视频**：[`rollout_chase.mp4`](rollout_chase.mp4)（12 秒，跟随相机）
+
 > **一句话结论**：在纯 CPU 的笔记本上跑通「四足机器人 PPO 步态训练」完整闭环，
 > 120 万步训练后策略可稳定行走 **12 秒 / 22.8 米，平均速度 1.9 m/s**；
 > 过程中系统性地做了 4 版**奖励设计迭代**，定位并解决了「站立局部最优」与「扑街式前进」两类典型失败模式。
@@ -93,3 +99,21 @@ python render_chase.py --run runs/ant_standard --seconds 12 --out rollout_chase
 > · 主导 4 版奖励设计迭代，定位"站立局部最优"与"扑街式前进"两类失败模式，并通过控制变量对照实验证明问题出在奖励结构而非算法实现。
 
 **面试可讲的三个点**：① 为什么站立会成为局部最优（激励冲突）；② 对照实验怎么做的（控制变量）；③ 从"能走"到"可调速"的下一步方案（课程学习 + 跟踪项叠加）。
+
+## 八、环境与复现要求
+
+- Python ≥ 3.9，依赖见上文（`mujoco`、`gymnasium`、`torch`、`imageio`、`imageio-ffmpeg`）
+- 纯 CPU 即可训练（19 线程约 1.0–2.0k steps/s），无需 CUDA
+- 训练好的策略可直接复用：`python render_chase.py --run runs/ant_standard`
+
+## 九、仓库
+
+本项目托管于 <https://github.com/sunsunsuns/quadruped-locomotion-rl>。
+
+```bash
+git clone git@github.com:sunsunsuns/quadruped-locomotion-rl.git
+cd quadruped-locomotion-rl
+pip install mujoco gymnasium torch imageio imageio-ffmpeg
+python render_chase.py --run runs/ant_standard --seconds 12 --out rollout_chase
+```
+
